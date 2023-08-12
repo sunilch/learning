@@ -1,3 +1,4 @@
+
 ### Softmax
 1. Ideally should be called softargmax
 2. Converts a bunch of numbers to another bunch of numbers between 0 and 1 and sum to 1
