@@ -8,7 +8,7 @@
 - The sequences over which the rnn is applied are typically thousands of instances in length. In such scenarios the input vector gets passed through many transformations which are matrix multiplications. There could be non linearities applied between one instance and the other. 
 - In such a case if the transformations are like rotations which do not strectch or shrink the vector (increase of decrease its norm) then norm of the vector and its effect in terms of its norm gets preserved during the forward pass to the layers much ahead in time.
     - The gradients in such a scenario during backprop also preserve their norm across the layers
-- In different scenarios like when the norm of the transformation equivalent matrix is < 0, the norm of the input gets shrinked as it traverses through the layers and leading to negligible contributon in a few time steps.
+- In different scenarios like when the norm of the transformation equivalent matrix is < 1, the norm of the input gets shrinked as it traverses through the layers and leading to negligible contributon in a few time steps.
     - Since the matrix applied during backprop is transpose of the matrix transformation in the forward prop, the gradient flow also stops because the gradient becomes equally small in a few time steps. Detailed example on backprop calculation is given in the subsection
 - Similarly if the norm of the transformation matrix > 0 we encounter exploding gradients problem during the backprop. This leads to very large gradients from the output in the backwards direction as distance to output increses.
     - The nonlinerarity like sigmoid could reduce the exploding gradient problem to an extant
